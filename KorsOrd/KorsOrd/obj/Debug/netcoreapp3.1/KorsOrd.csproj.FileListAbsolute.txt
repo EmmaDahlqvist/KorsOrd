@@ -1,0 +1,13 @@
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.exe
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.deps.json
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.runtimeconfig.json
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.runtimeconfig.dev.json
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.dll
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\bin\Debug\netcoreapp3.1\KorsOrd.pdb
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.csproj.CoreCompileInputs.cache
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.AssemblyInfoInputs.cache
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.AssemblyInfo.cs
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.dll
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.pdb
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.genruntimeconfig.cache
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.csprojAssemblyReference.cache
