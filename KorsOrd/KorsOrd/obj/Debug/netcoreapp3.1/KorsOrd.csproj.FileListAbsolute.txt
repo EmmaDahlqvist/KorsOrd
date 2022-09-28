@@ -10,4 +10,5 @@ C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1
 C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.dll
 C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.pdb
 C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.genruntimeconfig.cache
-C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.csprojAssemblyReference.cache
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.csproj.AssemblyReference.cache
+C:\Users\emma.dahlqvist4\Desktop\KorsOrd\KorsOrd\KorsOrd\obj\Debug\netcoreapp3.1\KorsOrd.GeneratedMSBuildEditorConfig.editorconfig

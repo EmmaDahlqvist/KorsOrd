@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YbMTJFBHOlwXN/Z/UTrrt31mVxwCBYwTI8aUakgZPKyxhsCsqoAt5zSCqCIMHto0esxCPYp1Hb4T3cgFphmMSA==",
+  "dgSpecHash": "ZJNvtnUWckman+SthW+3dI6KFjq32CWBV+ugYg6U0HqizSjpgPm0BpMaGDSegVb/pUf6WrxlfjENEc8X2Ao8UA==",
   "success": true,
   "projectFilePath": "C:\\Users\\emma.dahlqvist4\\Desktop\\KorsOrd\\KorsOrd\\KorsOrd\\KorsOrd.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\emma.dahlqvist4\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.29\\microsoft.netcore.app.host.win-x64.3.1.29.nupkg.sha512"
+  ],
   "logs": []
 }
