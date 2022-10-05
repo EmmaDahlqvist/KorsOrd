@@ -8,14 +8,39 @@ namespace KorsOrd
     {
         static void Main(string[] args)
         {
+            int level = 1; //level (olika ord för olika levlar)
             bool playAgain = false; //default false
+
             do //spela spelet först, fråga sedan om de vill spela igen
             {
-                PlayGame();
+                string[] letters = LettersList(level); //ordens alla bokstäver
+                string[] guessedLetters = GuessedLettersList(level); //de gissade bokstäverna + hints
 
+                PlayGame(guessedLetters, letters);
                 //runda avklarad
-                Print(ConsoleColor.White, -1, -1, "Do you want to play again? Type yes or no");
-                string yesOrNo = Console.ReadLine();
+
+                //alla rätt
+                int correctCount = CorrectAnswerCount(guessedLetters, letters);
+                int wrongCount = letters.Length - correctCount;
+                string yesOrNo = ""; //spela igen
+                if (wrongCount == 0)
+                {
+                    if(level < 2)
+                    {
+                        level++;
+                        Print(ConsoleColor.White, -1, -1, "You won this level! Do you want to play again? Type yes or no");
+                        yesOrNo = Console.ReadLine();
+                    } else
+                    {
+                        Console.WriteLine("You finished the game");
+                        break;
+                    }
+
+                }
+                else //några fel
+                {
+                    Print(ConsoleColor.White, -1, -1, "You got " + wrongCount + " answers wrong. Do you want to play again? Type yes or no");
+                }
 
                 if (yesOrNo.ToLower() == "yes")
                 {
@@ -32,29 +57,72 @@ namespace KorsOrd
             PrintSlow("\nGoodbye...", 100, ConsoleColor.DarkRed);
         }
 
-        static void PlayGame()
+        static string[] LettersList(int level)
         {
-            //ordens alla bokstäver
-            string[] letters = new string[] {
+            if(level == 1)
+            {
+                //default /level 1
+                return new string[] {
             "B", " ", "U", " ", "I", " ", "L", " ", "D",
             "A",
             "N", " ", "O", " ", "S", " ", "E",
-            "U"};
+                                          "U"};
+            } else if(level == 2)
+            {
+                return  new string[] {
+            "B", " ", "I", " ", "N", " ", "G", " ", "O",
+            "R",
+            "O", " ", "M", " ", "I", " ", "T",
+                                          "O"};
+            }
+            return null;
+        }
 
-            //de gissade bokstäverna + hints
+        static string[] GuessedLettersList(int level)
+        {
+            //de gissade bokstäverna
             string[] guessedLetters = new string[] {
-            "B", " ", "2", " ", "I", " ", "4", " ", "D",
+            "1", " ", "2", " ", "3", " ", "4", " ", "5",
             "6",
-            "N", " ", "8", " ", "9"," ", "E",
+            "7", " ", "8", " ", "9"," ", "10",
             "11"};
+
+            //ge hints på random bokstäver
+            string[] letters = LettersList(level);
+            Random rnd = new Random();
+            int amountOfHitns = rnd.Next(2, 7);
+
+            for(int i = 0; i < amountOfHitns; i++)
+            {
+                //index som ska bytas ut
+                int hintIndex = rnd.Next(letters.Length);
+
+                //ifall indexet bara är ett mellanrum
+                while (true)
+                {
+                    if (letters[hintIndex] == " ")
+                    {
+                        hintIndex = rnd.Next(letters.Length);
+                    } else
+                    {
+                        //det är en bokstav
+                        break;
+                    }
+                }
+
+                guessedLetters[hintIndex] = letters[hintIndex];
+            }
+
+            return guessedLetters;
+        }
+
+        static void PlayGame(string[] guessedLetters, string[] letters)
+        {
 
             //tills att alla platser är fyllda med bokstäver
             while (getIndexes(guessedLetters).Count > 0)
             {
                 WriteBoard(guessedLetters, letters, false);
-                Print(ConsoleColor.White, -1, -1, "Hint: word one is a verb" +
-                    "\nWord two is another word for kick out\nWord three is a body part" +
-                    "\nWord four is a union");
                 Guess(guessedLetters); //hantera gissningar
             }
 
@@ -62,16 +130,16 @@ namespace KorsOrd
             WriteBoard(guessedLetters, letters, true);
         }
 
-        //grön färg rätt, röd fel
-        static ConsoleColor RightAnswer(string guessedLetter, string letter)
+        //rätt eller fel bokstav
+        static bool RightAnswer(string guessedLetter, string letter)
         {
             if (guessedLetter == letter)
             {
-                return ConsoleColor.Green;
+                return true;
             }
             else
             {
-                return ConsoleColor.DarkRed;
+                return false;
             }
         }
 
@@ -231,7 +299,13 @@ namespace KorsOrd
                 }
                 else if (gameOver)
                 {
-                    color = RightAnswer(guess, correct);
+                    if(RightAnswer(guess, correct)){
+                        color = ConsoleColor.Green;
+                    } else
+                    {
+                        color = ConsoleColor.DarkRed;
+                    }
+ 
                 }
 
                 //skriv ut orden
@@ -257,6 +331,21 @@ namespace KorsOrd
                     Print(color, tempPositionX, tempPositionY, guess);
                 }
             }
+        }
+
+        //kolla efter antalet rätt
+        static int CorrectAnswerCount(string[] guessedLetters, string[] letters)
+        {
+            int correctCount = 0;
+            for(int i = 0; i < guessedLetters.Length; i++)
+            {
+                //det är inte en int, det är en bokstav
+                if (RightAnswer(guessedLetters[i], letters[i]))
+                {
+                    correctCount++;
+                }
+            }
+            return correctCount;
         }
 
         //printa på konsoll med koordinater och färg
