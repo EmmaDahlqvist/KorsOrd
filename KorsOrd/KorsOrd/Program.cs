@@ -16,32 +16,31 @@ namespace KorsOrd
                 string[] letters = LettersList(level); //ordens alla bokstäver
                 string[] guessedLetters = GuessedLettersList(level); //de gissade bokstäverna + hints
 
-                PlayGame(guessedLetters, letters);
+                PlayGame(guessedLetters, letters, level);
                 //runda avklarad
 
-                //alla rätt
+                //kolla antal rätt
                 int correctCount = CorrectAnswerCount(guessedLetters, letters);
                 int wrongCount = letters.Length - correctCount;
                 string yesOrNo = ""; //spela igen
-                if (wrongCount == 0)
+                if (wrongCount == 0) //alla rätt -> ny level
                 {
-                    if(level < 2)
+                    level++;
+                    if(LettersList(level) != null)
                     {
-                        level++;
                         Print(ConsoleColor.White, -1, -1, "You won this level! Do you want to play again? Type yes or no");
-                        yesOrNo = Console.ReadLine();
-                    } else
-                    {
-                        Console.WriteLine("You finished the game");
-                        break;
                     }
-
+                    else //leveln finns ej
+                    {
+                        Print(ConsoleColor.Green, -1, -1, "You finished the game. Press enter to end it!");
+                    }
                 }
                 else //några fel
                 {
                     Print(ConsoleColor.White, -1, -1, "You got " + wrongCount + " answers wrong. Do you want to play again? Type yes or no");
                 }
 
+                yesOrNo = Console.ReadLine();
                 if (yesOrNo.ToLower() == "yes")
                 {
                     playAgain = true;
@@ -57,25 +56,54 @@ namespace KorsOrd
             PrintSlow("\nGoodbye...", 100, ConsoleColor.DarkRed);
         }
 
+        //starta igång spelet
+        static void PlayGame(string[] guessedLetters, string[] letters, int level)
+        {
+
+            //tills att alla platser är fyllda med bokstäver
+            while (getIndexes(guessedLetters).Count > 0)
+            {
+                WriteBoard(guessedLetters, letters, false); //skriv ut spelplan
+                GiveHints(level);
+                Guess(guessedLetters); //hantera gissningar
+            }
+
+            //rätta
+            WriteBoard(guessedLetters, letters, true);
+        }
+
         static string[] LettersList(int level)
         {
             if(level == 1)
             {
-                //default /level 1
                 return new string[] {
-            "B", " ", "U", " ", "I", " ", "L", " ", "D",
-            "A",
-            "N", " ", "O", " ", "S", " ", "E",
-                                          "U"};
+                "B", " ", "U", " ", "I", " ", "L", " ", "D",
+                "A",
+                "N", " ", "O", " ", "S", " ", "E",
+                                              "U"};
             } else if(level == 2)
             {
                 return  new string[] {
-            "B", " ", "I", " ", "N", " ", "G", " ", "O",
-            "R",
-            "O", " ", "M", " ", "I", " ", "T",
-                                          "O"};
+                "B", " ", "I", " ", "N", " ", "G", " ", "O",
+                "R",
+                "O", " ", "M", " ", "I", " ", "T",
+                                              "O"};
+            } else if(level == 3)
+            {
+                return new string[] {
+                "S", " ", "U", " ", "N", " ", "N", " ", "Y",
+                "E",
+                "A", " ", "L", " ", "S", " ", "O",
+                                              "P"};
+            } else if(level == 4)
+            {
+                return new string[] {
+                "H", " ", "O", " ", "R", " ", "S", " ", "E",
+                "A",
+                "M", " ", "E", " ", "N", " ", "U",
+                                              "S"};
             }
-            return null;
+            return null; //level finns ej
         }
 
         static string[] GuessedLettersList(int level)
@@ -114,20 +142,6 @@ namespace KorsOrd
             }
 
             return guessedLetters;
-        }
-
-        static void PlayGame(string[] guessedLetters, string[] letters)
-        {
-
-            //tills att alla platser är fyllda med bokstäver
-            while (getIndexes(guessedLetters).Count > 0)
-            {
-                WriteBoard(guessedLetters, letters, false);
-                Guess(guessedLetters); //hantera gissningar
-            }
-
-            //rätta
-            WriteBoard(guessedLetters, letters, true);
         }
 
         //rätt eller fel bokstav
@@ -372,6 +386,45 @@ namespace KorsOrd
             {
                 Console.Write(letters[i]);
                 Thread.Sleep(delay);
+            }
+        }
+
+        static void GiveHints(int level)
+        {
+            if (level == 1)
+            {
+                Print(ConsoleColor.DarkYellow, -1, -1, "-----------HINTS----------- \n" +
+                    "The first word is something you can do with material\n" +
+                    "The second word is another word for forbid \n" +
+                    "The third word is a facial body part \n" +
+                    "The last word is a union\n" +
+                    "---------------------------");
+            }
+            else if (level == 2)
+            {
+                Print(ConsoleColor.DarkYellow, -1, -1, "-----------HINTS----------- \n" + 
+                    "The first word is a game\n" +
+                    "The second word is another word for brother\n" +
+                    "The third word is a synonym of exclude \n" +
+                    "---------------------------");
+            }
+            else if (level == 3)
+            {
+                Print(ConsoleColor.DarkYellow, -1, -1, "-----------HINTS----------- \n" + 
+                    "The first word is a nice weather condition\n" +
+                    "The second word is a type of water\n" +
+                    "The third word is a synonym to as well\n" +
+                    "The last word is a short for overpowered\n" +
+                    "---------------------------");
+            }
+            else if (level == 4)
+            {
+                Print(ConsoleColor.DarkYellow, -1, -1, "-----------HINTS----------- \n" + 
+                    "The first word is an animal\n" +
+                    "The second word is meat on a sandwich\n" +
+                    "The third word is usually read at a restaurant \n" +
+                    "The last word is a short for the united states\n" +
+                    "---------------------------");
             }
         }
     }
