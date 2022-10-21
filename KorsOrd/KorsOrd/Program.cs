@@ -14,6 +14,7 @@ namespace KorsOrd
             Program program = new Program();
             Correction correction = new Correction();
             Start start = new Start();
+            Hints hints = new Hints();
 
             int level = 1;
             bool playAgain = false;
@@ -21,7 +22,7 @@ namespace KorsOrd
             do //spela spelet först, fråga sedan om de vill spela igen
             {
                 string[] letters = lettersClass.LettersList(level); //rätt bokstäver
-                string[] guessedLetters = lettersClass.GuessedLettersList(level); //gissade bokstäver
+                string[] guessedLetters = hints.GuessedLettersList(level); //gissade bokstäver
 
                 start.PlayGame(guessedLetters, letters, level); //starta spel
 

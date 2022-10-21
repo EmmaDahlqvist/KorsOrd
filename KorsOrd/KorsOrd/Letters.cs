@@ -11,7 +11,7 @@ namespace KorsOrd
         {
             if (level == 1)
             {
-                return new string[] {
+                return new string[] { 
                 "B", " ", "U", " ", "I", " ", "L", " ", "D",
                 "A",
                 "N", " ", "O", " ", "S", " ", "E",
@@ -52,39 +52,6 @@ namespace KorsOrd
             "6",
             "7", " ", "8", " ", "9"," ", "10",
             "11"};
-            return guessedLetters;
-        }
-
-        public string[] GuessedLettersList(int level)
-        {
-            //de gissade bokstäverna
-            string[] guessedLetters = GuessedLetterIndexes();
-
-            //ge hints på random bokstäver
-            string[] letters = LettersList(level);
-            Random rnd = new Random();
-            int amountOfHitns = rnd.Next(3, 7);
-
-            for (int i = 0; i < amountOfHitns; i++)
-            {
-                //index som ska bytas ut
-                int hintIndex = rnd.Next(letters.Length);
-
-                //ifall indexet bara är ett mellanrum
-                while (true)
-                {
-                    if (letters[hintIndex] == " ")
-                    {
-                        hintIndex = rnd.Next(letters.Length);
-                    }
-                    else
-                    {
-                        //det är en bokstav
-                        break;
-                    }
-                }
-                guessedLetters[hintIndex] = letters[hintIndex];
-            }
             return guessedLetters;
         }
 

@@ -16,7 +16,7 @@ namespace KorsOrd
         {
             int tempPositionX = 0;
             int tempPositionY = 0;
-            Console.Clear();
+            //Console.Clear();
 
             for (int i = 0; i < guessedLetters.Length; i++)
             {
@@ -25,22 +25,22 @@ namespace KorsOrd
                 ConsoleColor color = BoardColor(guess, correct, gameOver);
 
                 //skriv ut orden
-                if (i <= 8) //för "Build"
+                if (i <= 8) //för ord 1
                 {
                     Print(color, i, 0, guess);
                 }
-                else if (i <= 9) //för " a"
+                else if (i <= 9) //för ord 2 vertikal
                 {
                     tempPositionY = 1;
                     Print(color, 0, tempPositionY, guess);
                     tempPositionY++;
                 }
-                else if (i <= 16) //för "nose"
+                else if (i <= 16) //för ord 2 horisontell
                 {
                     Print(color, tempPositionX, tempPositionY, guess);
                     tempPositionX++;
                 }
-                else //för " u"
+                else //för ord 4 vertikal
                 {
                     tempPositionX--;
                     tempPositionY++;
