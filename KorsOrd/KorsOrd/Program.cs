@@ -13,7 +13,7 @@ namespace KorsOrd
             PrintToConsole print = new PrintToConsole();
             Program program = new Program();
             Correction correction = new Correction();
-            Start start = new Start();
+            Game game = new Game();
             Hints hints = new Hints();
 
             int level = 1;
@@ -24,37 +24,15 @@ namespace KorsOrd
                 string[] letters = lettersClass.LettersList(level); //rätt bokstäver
                 string[] guessedLetters = hints.GuessedLettersList(level); //gissade bokstäver
 
-                start.PlayGame(guessedLetters, letters, level); //starta spel
+                game.PlayGame(guessedLetters, letters, level); //starta spel
 
                 //kolla antal rätt
                 int correctCount = correction.CorrectAnswerCount(guessedLetters, letters);
                 int wrongCount = letters.Length - correctCount;
-                if (wrongCount == 0) //alla rätt -> ny level
-                {
-                    level++;
-                    if(letters != null)
-                    {
-                        print.Print(ConsoleColor.White, -1, -1, "You won this level! Do you want to play again? Type yes or no");
-                    }
-                    else
-                    {
-                        print.Print(ConsoleColor.Green, -1, -1, "You finished the game. Press enter to end it!");
-                    }
-                }
-                else //några fel
-                {
-                    print.Print(ConsoleColor.White, -1, -1, "You got " + wrongCount + " answers wrong. Do you want to play again? Type yes or no");
-                }
 
-                string yesOrNo = Console.ReadLine();
-                if (yesOrNo.ToLower() == "yes")
-                {
-                    playAgain = true;
-                }
-                else
-                {
-                    playAgain = false;
-                }
+                int levelUp = game.LevelUp(wrongCount);
+                level += levelUp;
+                playAgain = game.PlayAgain(level, levelUp, wrongCount);
 
             } while (playAgain);
 

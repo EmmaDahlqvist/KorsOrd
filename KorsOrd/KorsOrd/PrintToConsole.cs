@@ -16,7 +16,7 @@ namespace KorsOrd
         {
             int tempPositionX = 0;
             int tempPositionY = 0;
-            //Console.Clear();
+            Console.Clear();
 
             for (int i = 0; i < guessedLetters.Length; i++)
             {

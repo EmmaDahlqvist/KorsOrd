@@ -17,17 +17,27 @@ namespace KorsOrd
             //ge hints på random bokstäver
             string[] letters = lettersClass.LettersList(level);
             Random rnd = new Random();
-            int amountOfHints = rnd.Next(4, 7);
+            int amountOfHints = rnd.Next(4, 6);
             List<int> confirmedHintIndexes = new List<int>(); 
 
             for (int i = 0; i < amountOfHints; i++)
             {
                 //index som ska bytas ut
                 int hintIndex = rnd.Next(letters.Length);
+
+                //minska fördröjningen på loopen
+                int looped = 0;
+
                 //skapa korrekta hints
                 while (incorrectHint(confirmedHintIndexes, hintIndex, guessedLetters[hintIndex]))
                 {
+                    if(looped > 20)
+                    {
+                        break;
+                    }
                     hintIndex = rnd.Next(letters.Length);
+                    looped++;
+
                 }
                 confirmedHintIndexes.Add(hintIndex);
             }
@@ -62,9 +72,9 @@ namespace KorsOrd
                 {
                     return true;
                 }
+
                 if(index + 1 == confirmedIndexes[i] || index - 1 == confirmedIndexes[i])
                 {
-                    Console.WriteLine(index +  " " + confirmedIndexes[i]);
                     return true;
                 }
             }

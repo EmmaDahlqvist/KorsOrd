@@ -19,7 +19,7 @@ namespace KorsOrd
             }
         }
 
-        //kolla efter antalet rätt
+        //antalet rätt
         public int CorrectAnswerCount(string[] guessedLetters, string[] letters)
         {
             int correctCount = 0;
