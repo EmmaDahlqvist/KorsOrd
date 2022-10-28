@@ -8,3 +8,4 @@ Kom ihåg att du måste välja ett index som finns med i listan för att spelet 
 <img width="253" alt="image" src="https://user-images.githubusercontent.com/91540265/194553012-4168c84b-db1d-447f-977a-91b9673df66f.png">
 <img width="146" alt="image" src="https://user-images.githubusercontent.com/91540265/194553173-0f5f14ed-1498-4332-8ccd-4793b02f6381.png">
 
+Du kan köra spelet genom att ladda ner git och visualstudio. Kopiera git länken och clona repositoryt genom en terminal, exempelvis powershell. Välj en lämplig plats på datorn, förslagsvis på skrivbordet, och använd kommandot git clone (länk). Öppna sedan denna mapp i visualstudio och öppna program.cs. Kör sedan programmet.
