@@ -17,8 +17,8 @@ namespace KorsOrd
             //ge hints på random bokstäver
             string[] letters = lettersClass.LettersList(level);
             Random rnd = new Random();
-            int amountOfHints = rnd.Next(4, 6);
-            List<int> confirmedHintIndexes = new List<int>(); 
+            int amountOfHints = rnd.Next(4, 6); //mellan 4-5 hints
+            List<int> confirmedHintIndexes = new List<int>();
 
             for (int i = 0; i < amountOfHints; i++)
             {
@@ -53,14 +53,8 @@ namespace KorsOrd
         //finn inkorrekta hints
         public bool incorrectHint(List<int> confirmedIndexes, int index, string letter)
         {
-            //mellanrum
-            if (letter == " ")
-            {
-                return true;
-            }
-
-            //finns redan
-            if (confirmedIndexes.Contains(index))
+            //finns redan eller mellanrum
+            if (confirmedIndexes.Contains(index) || letter == " ")
             {
                 return true;
             }

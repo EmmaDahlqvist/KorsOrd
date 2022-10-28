@@ -17,27 +17,21 @@ namespace KorsOrd
             string letter = GuessedLetter(guessedLetters);
 
             //lägg till bokstav i guessedLetters
-            bool indexIsCorrect = false;
             for (int i = 0; i < guessedLetters.Length; i++)
             {
-                if (guessedLetters[i] == index.ToString()) //replaca index
+                //hitta platsen
+                if (guessedLetters[i] == index.ToString()) 
                 {
+                    //replaca index
                     guessedLetters[i] = letter;
-                    indexIsCorrect = true;
-                    break;
-                }
-
-                //breaka loopen för att undvika onödig loop
-                if (indexIsCorrect)
-                {
                     break;
                 }
             }
         }
 
+        //ta in valt index
         public int ChosenIndex(string[] guessedLetters)
         {
-            ////välj index
             print.Print(ConsoleColor.White, -1, -1, "Choose an index to replace with a letter: ");
             int index = -1;
 
@@ -70,15 +64,17 @@ namespace KorsOrd
             return index;
         }
 
+        //ta in gissad bokstav
         public string GuessedLetter(string[] guessedLetters)
         {
-            //se till att det endast är en BOKSTAV (konvertera string till char)
             string letter = null;
             bool correctGuess = false;
+            print.Print(ConsoleColor.White, -1, -1, "Guess the letter: ");
+
+            //se till att det endast är en BOKSTAV 
             while (!correctGuess)
             {
                 //välj bokstav
-                print.Print(ConsoleColor.White, -1, -1, "Guess the letter: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 letter = Console.ReadLine().ToUpper();
 

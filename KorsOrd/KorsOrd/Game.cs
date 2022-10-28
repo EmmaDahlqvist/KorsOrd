@@ -44,6 +44,7 @@ namespace KorsOrd
             bool playAgain = false;
             if(levelUp == 1) //vann omgången
             {
+                //spela igen alternativ
                 if (lettersClass.LettersList(level) != null) 
                 {
                     print.Print(ConsoleColor.White, -1, -1, "You won this level! Do you want to play again? Type yes or no");

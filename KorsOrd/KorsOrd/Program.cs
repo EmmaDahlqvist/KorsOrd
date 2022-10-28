@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System;
+﻿using System;
 
 namespace KorsOrd
 {
@@ -11,7 +9,6 @@ namespace KorsOrd
             //objekt
             Letters lettersClass = new Letters();
             PrintToConsole print = new PrintToConsole();
-            Program program = new Program();
             Correction correction = new Correction();
             Game game = new Game();
             Hints hints = new Hints();
