@@ -27,6 +27,7 @@ namespace KorsOrd
                 int correctCount = correction.CorrectAnswerCount(guessedLetters, letters);
                 int wrongCount = letters.Length - correctCount;
 
+                //levla upp om alla rätt och fråga om att spela igen
                 int levelUp = game.LevelUp(wrongCount);
                 level += levelUp;
                 playAgain = game.PlayAgain(level, levelUp, wrongCount);

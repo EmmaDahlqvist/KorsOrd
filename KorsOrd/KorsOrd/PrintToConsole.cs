@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
 using System.Threading;
 
 namespace KorsOrd
@@ -53,6 +50,7 @@ namespace KorsOrd
         {
             if (gameOver == false)
             {
+                //ints röd färg, bokstäver blå färg
                 if (tryInt.TestStringIsInt(guess))
                 {
                     return ConsoleColor.Red;
@@ -64,6 +62,7 @@ namespace KorsOrd
             }
             else if (gameOver)
             {
+                //rätt grön färg, fel röd färg
                 if (correction.RightAnswer(guess, correct))
                 {
                     return ConsoleColor.Green;

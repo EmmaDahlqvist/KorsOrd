@@ -13,8 +13,8 @@ namespace KorsOrd
         //ta in gissning lägg till i listan
         public void Guess(string[] guessedLetters)
         {
-            int index = ChosenIndex(guessedLetters);
-            string letter = GuessedLetter(guessedLetters);
+            int index = ChosenIndex(guessedLetters); //vald index
+            string letter = GuessedLetter(guessedLetters); //vald bokstav
 
             //lägg till bokstav i guessedLetters
             for (int i = 0; i < guessedLetters.Length; i++)
@@ -22,7 +22,7 @@ namespace KorsOrd
                 //hitta platsen
                 if (guessedLetters[i] == index.ToString()) 
                 {
-                    //replaca index
+                    //replaca index till vald bokstav
                     guessedLetters[i] = letter;
                     break;
                 }
@@ -35,32 +35,29 @@ namespace KorsOrd
             print.Print(ConsoleColor.White, -1, -1, "Choose an index to replace with a letter: ");
             int index = -1;
 
-            bool correctIndex = false;
-            while (!correctIndex) //tills att gissad index är giltlig
+            while (true) //tills att gissad index är giltlig
             {
+                //välj index
                 Console.ForegroundColor = ConsoleColor.Red;
                 string stringIndex = Console.ReadLine();
                 if (tryInt.TestStringIsInt(stringIndex)) //det är en int
                 {
                     index = int.Parse(stringIndex); //konvertera
 
-                    //ifall index finns/finns kvar i listan
-                    if (letters.getIndexes(guessedLetters).Contains(index))
+                    if (letters.getIndexes(guessedLetters).Contains(index)) //ifall index finns kvar i listan
                     {
-                        correctIndex = true;
+                        break;
                     }
-                    else
+                    else //finns ej kvar
                     {
                         print.Print(ConsoleColor.DarkRed, -1, -1, "Index was out of bound");
                     }
                 }
-
-                else
+                else //det är inte en int
                 {
                     print.Print(ConsoleColor.DarkRed, -1, -1, "Index has to be an int!");
                 }
             }
-
             return index;
         }
 
@@ -68,13 +65,12 @@ namespace KorsOrd
         public string GuessedLetter(string[] guessedLetters)
         {
             string letter = null;
-            bool correctGuess = false;
             print.Print(ConsoleColor.White, -1, -1, "Guess the letter: ");
 
-            //se till att det endast är en BOKSTAV 
-            while (!correctGuess)
+            //se till är det endast en BOKSTAV 
+            while (true)
             {
-                //välj bokstav
+                //input
                 Console.ForegroundColor = ConsoleColor.Blue;
                 letter = Console.ReadLine().ToUpper();
 
@@ -89,7 +85,7 @@ namespace KorsOrd
                     //testa så det endast är en bokstav
                     if (letter.Length == 1)
                     {
-                        correctGuess = true;
+                        break;
                     }
                     else
                     {
@@ -97,7 +93,6 @@ namespace KorsOrd
                     }
                 }
             }
-
             return letter;
         }
 

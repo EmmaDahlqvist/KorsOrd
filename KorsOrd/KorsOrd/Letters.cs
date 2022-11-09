@@ -7,6 +7,7 @@ namespace KorsOrd
     internal class Letters
     {
         TryInt tryInt = new TryInt();
+
         public string[] LettersList(int level)
         {
             if (level == 1)
@@ -55,7 +56,7 @@ namespace KorsOrd
             return guessedLetters;
         }
 
-        //få alla indexes som är kvar i listan
+        //få alla indexes som är kvar i gissade listan
         public List<int> getIndexes(string[] guessedLetters)
         {
             List<int> indexes = new List<int>(); //dynamisk temp lista

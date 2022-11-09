@@ -19,11 +19,11 @@ namespace KorsOrd
             while (lettersClass.getIndexes(guessedLetters).Count > 0)
             {
                 print.WriteBoard(guessedLetters, letters, false); //skriv ut spelplan
-                hints.GiveHints(level);
+                hints.GiveHints(level); //hints
                 guess.Guess(guessedLetters); //hantera gissningar
             }
 
-            //rätta
+            //spel slut -> rätta
             print.WriteBoard(guessedLetters, letters, true);
         }
 
@@ -51,7 +51,8 @@ namespace KorsOrd
                 }
                 else //max level
                 {
-                    print.Print(ConsoleColor.Green, -1, -1, "Good job you finished the game! Press enter to end it");
+                    print.Print(ConsoleColor.Green, -1, -1, "Good job you finished the game!");
+                    return false;
                 }
             }
             else //några fel

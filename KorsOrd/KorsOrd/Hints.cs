@@ -9,13 +9,14 @@ namespace KorsOrd
     {
         PrintToConsole print = new PrintToConsole();
         Letters lettersClass = new Letters();
+
+        //listan som skrivs ut på konsollen
         public string[] GuessedLettersList(int level)
         {
-            //de gissade bokstäverna
-            string[] guessedLetters = lettersClass.GuessedLetterIndexes();
+            string[] guessedLetters = lettersClass.GuessedLetterIndexes(); //index lista
+            string[] letters = lettersClass.LettersList(level); //bokstavs lista
 
             //ge hints på random bokstäver
-            string[] letters = lettersClass.LettersList(level);
             Random rnd = new Random();
             int amountOfHints = rnd.Next(4, 6); //mellan 4-5 hints
             List<int> confirmedHintIndexes = new List<int>();
